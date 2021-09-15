@@ -1,3 +1,4 @@
+import 'package:cryptocu_app/src/pages/recommended_Crypto_page.dart';
 import 'package:flutter/material.dart';
 
 import 'src/pages/tab_pages.dart';
@@ -9,10 +10,15 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
+      // theme: miTema,
       title: 'Crypto App',
-      home: TabsPages(),
+      initialRoute: 'home',
+      routes: {
+        'home': (_) => const TabsPages(),
+        'all': (_) => const RecommendedCryptoPage(),
+      },
     );
   }
 }
