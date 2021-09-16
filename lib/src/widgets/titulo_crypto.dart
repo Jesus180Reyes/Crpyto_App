@@ -17,7 +17,7 @@ class TituloCrypto extends StatelessWidget {
         children: [
           Expanded(
             child: Text(
-              'Recommended for you',
+              'Top Trending',
               style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
             ),
           ),

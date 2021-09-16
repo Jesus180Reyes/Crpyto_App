@@ -1,5 +1,7 @@
 import 'package:cryptocu_app/src/pages/recommended_Crypto_page.dart';
+import 'package:cryptocu_app/src/services/crypto_services.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import 'src/pages/tab_pages.dart';
 
@@ -10,15 +12,20 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      // theme: miTema,
-      title: 'Crypto App',
-      initialRoute: 'home',
-      routes: {
-        'home': (_) => const TabsPages(),
-        'all': (_) => const RecommendedCryptoPage(),
-      },
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => CryptoServices()),
+      ],
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        // theme: miTema,
+        title: 'Crypto App',
+        initialRoute: 'home',
+        routes: {
+          'home': (_) => const TabsPages(),
+          'all': (_) => const RecommendedCryptoPage(),
+        },
+      ),
     );
   }
 }

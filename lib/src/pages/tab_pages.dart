@@ -18,7 +18,7 @@ class TabsPages extends StatelessWidget {
         body: _Paginas(),
         bottomNavigationBar: _Navegation(),
         // floatingActionButton: _FloatingButton(),
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+        // floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       ),
     );
   }
@@ -30,6 +30,7 @@ class _Paginas extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final navegationModel = Provider.of<_NavegationModel>(context);
+
     return PageView(
       controller: navegationModel._pageController,
       // physics: const BouncingScrollPhysics(),
@@ -56,18 +57,31 @@ class _Navegation extends StatelessWidget {
       currentIndex: navegationModel._paginaActual,
       items: const [
         BottomNavigationBarItem(
-          icon: Icon(Icons.home),
+          icon: Icon(
+            Icons.home,
+            size: 27,
+          ),
           label: 'Home',
         ),
         BottomNavigationBarItem(
-          activeIcon: Icon(Icons.favorite),
-          icon: Icon(Icons.favorite_border_outlined),
-          label: 'Watchlist',
+          // activeIcon: Icon(Icons.favorite),
+          icon: Icon(
+            Icons.search_outlined,
+            size: 27,
+          ),
+
+          label: 'Search',
         ),
         BottomNavigationBarItem(
-          // activeIcon: Icon(Icons.favorite),
-          icon: Icon(Icons.person),
-          label: 'Profile',
+          activeIcon: Icon(
+            Icons.favorite,
+            // size: 27,
+          ),
+          icon: Icon(
+            Icons.favorite_border_outlined,
+            size: 27,
+          ),
+          label: 'Watchlist',
         ),
       ],
     );
