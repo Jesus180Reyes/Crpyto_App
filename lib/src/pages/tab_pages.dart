@@ -14,7 +14,7 @@ class TabsPages extends StatelessWidget {
     return ChangeNotifierProvider(
       create: (_) => _NavegationModel(),
       child: const Scaffold(
-        backgroundColor: Colors.white,
+        // backgroundColor: Colors.white,
         body: _Paginas(),
         bottomNavigationBar: _Navegation(),
         // floatingActionButton: _FloatingButton(),

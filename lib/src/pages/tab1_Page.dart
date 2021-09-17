@@ -14,8 +14,10 @@ class Tab1Page extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final coins = Provider.of<CryptoServices>(context).coins;
+    final news = Provider.of<CryptoServices>(context).news;
 
     return Scaffold(
+      // drawerScrimColor: Colors.red,
       appBar: AppBar(
         centerTitle: true,
         backgroundColor: Colors.white,
@@ -25,16 +27,16 @@ class Tab1Page extends StatelessWidget {
           style: TextStyle(color: Colors.black),
         ),
       ),
-      // backgroundColor: Colors.red,
+
+      drawer: const Drawer(),
+
       body: Column(
         // ignore: prefer_const_literals_to_create_immutables
         children: [
-          const BannerCrypto(),
+          BannerCrypto(news: news),
           const SizedBox(height: 7.0),
           const TituloCrypto(),
-          CardCrpyto(
-            coins: coins,
-          ),
+          CardCrpyto(coins: coins),
         ],
       ),
     );

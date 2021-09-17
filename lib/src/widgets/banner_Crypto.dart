@@ -1,29 +1,45 @@
 // ignore_for_file: file_names
 
-import 'package:carousel_slider/carousel_slider.dart';
+import 'package:card_swiper/card_swiper.dart';
+import 'package:cryptocu_app/src/models/newsCryptoEvent.model.dart';
 import 'package:flutter/material.dart';
 
 class BannerCrypto extends StatelessWidget {
-  const BannerCrypto({Key? key}) : super(key: key);
+  final List<New> news;
+
+  const BannerCrypto({Key? key, required this.news}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: SizedBox(
+    if (news.isEmpty) {
+      return const SizedBox(
         width: double.infinity,
         height: 220,
+        child: Center(
+          child: CircularProgressIndicator.adaptive(
+
+              // backgroundColor: Colors.indigo,
+              ),
+        ),
+      );
+    }
+    return SafeArea(
+      child: SizedBox(
+        width: 400,
+        height: 220,
         // color: Colors.blue,
-        child: CarouselSlider.builder(
-          itemCount: 10,
-          itemBuilder: (context, index, realIndex) => const PosterImage(),
-          options: CarouselOptions(
-            // height: 200,
-            autoPlay: true,
-            autoPlayInterval: const Duration(seconds: 5),
-            aspectRatio: 2.0,
-            enlargeCenterPage: true,
-            autoPlayCurve: Curves.fastOutSlowIn,
-          ),
+        child: Swiper(
+          itemCount: news.length,
+          autoplay: true,
+          autoplayDelay: 10000,
+          autoplayDisableOnInteraction: true,
+          // viewportFraction: 0.10,
+          // scale: 0,
+          itemBuilder: (context, int index) {
+            return PosterImage(
+              news: news[index],
+            );
+          },
         ),
       ),
     );
@@ -31,25 +47,47 @@ class BannerCrypto extends StatelessWidget {
 }
 
 class PosterImage extends StatelessWidget {
-  const PosterImage({Key? key}) : super(key: key);
+  final New news;
+
+  const PosterImage({
+    Key? key,
+    required this.news,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
       // height: 700,
       margin: const EdgeInsets.only(top: 5),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(18),
-        child: const FadeInImage(
-          width: double.infinity,
-          // height: 200,
-          placeholder: AssetImage('assets/loading.gif'),
-          image: NetworkImage(
-            'https://img.freepik.com/free-vector/nature-scene-with-river-hills-forest-mountain-landscape-flat-cartoon-style-illustration_1150-37326.jpg?size=626&ext=jpg&ga=GA1.2.2089856124.1629936000',
-          ),
-          fit: BoxFit.cover,
-        ),
-      ),
+      child: _Imagen(news: news),
+    );
+  }
+}
+
+class _Imagen extends StatelessWidget {
+  const _Imagen({
+    Key? key,
+    required this.news,
+  }) : super(key: key);
+
+  final New news;
+
+  @override
+  Widget build(BuildContext context) {
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(20),
+      child: (news.screenshot != 'missing_original.png')
+          ? FadeInImage(
+              // width: double.infinity,
+              placeholder: const AssetImage('assets/no-image.jpg'),
+              image: NetworkImage(
+                news.screenshot!,
+              ),
+              fit: BoxFit.cover,
+            )
+          : const Image(
+              image: NetworkImage('https://i.stack.imgur.com/GNhxO.png'),
+            ),
     );
   }
 }
