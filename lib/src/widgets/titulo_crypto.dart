@@ -5,7 +5,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 
 class TituloCrypto extends StatelessWidget {
-  const TituloCrypto({Key? key}) : super(key: key);
+  final String titulo;
+  final String seeall;
+  final String tap;
+  const TituloCrypto(
+      {Key? key, required this.titulo, required this.seeall, required this.tap})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,14 +22,14 @@ class TituloCrypto extends StatelessWidget {
         children: [
           Expanded(
             child: Text(
-              'Top Trending 24Hr',
+              titulo,
               style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
             ),
           ),
           GestureDetector(
-            onTap: () => Navigator.pushNamed(context, 'all'),
+            onTap: () => Navigator.pushNamed(context, tap),
             child: Text(
-              'See All',
+              seeall,
               style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
             ),
           ),

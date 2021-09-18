@@ -28,8 +28,8 @@ class NewsCrypto {
     required this.currentPrice,
     required this.marketCap,
     required this.marketCapRank,
-    required this.fullyDilutedValuation,
-    required this.totalVolume,
+    // required this.fullyDilutedValuation,
+    // this.totalVolume,
     required this.high24H,
     required this.low24H,
     required this.priceChange24H,
@@ -37,8 +37,8 @@ class NewsCrypto {
     required this.marketCapChange24H,
     required this.marketCapChangePercentage24H,
     required this.circulatingSupply,
-    required this.totalSupply,
-    required this.maxSupply,
+    // required this.totalSupply,
+    // required this.maxSupply,
     required this.ath,
     required this.athChangePercentage,
     required this.athDate,
@@ -54,8 +54,8 @@ class NewsCrypto {
   final double currentPrice;
   final int marketCap;
   final int marketCapRank;
-  final int fullyDilutedValuation;
-  final int totalVolume;
+  // final int fullyDilutedValuation;
+  // final String? totalVolume;
   final double high24H;
   final double low24H;
   final double priceChange24H;
@@ -63,8 +63,8 @@ class NewsCrypto {
   final double marketCapChange24H;
   final double marketCapChangePercentage24H;
   final double circulatingSupply;
-  final double totalSupply;
-  final double maxSupply;
+  // final double totalSupply;
+  // final double maxSupply;
   final double ath;
   final double athChangePercentage;
   final DateTime athDate;
@@ -80,10 +80,7 @@ class NewsCrypto {
         currentPrice: json["current_price"].toDouble(),
         marketCap: json["market_cap"],
         marketCapRank: json["market_cap_rank"],
-        fullyDilutedValuation: json["fully_diluted_valuation"] == null
-            ? null
-            : json["fully_diluted_valuation"],
-        totalVolume: json["total_volume"],
+        // totalVolume: json["total_volume"],
         high24H: json["high_24h"].toDouble(),
         low24H: json["low_24h"].toDouble(),
         priceChange24H: json["price_change_24h"].toDouble(),
@@ -93,11 +90,6 @@ class NewsCrypto {
         marketCapChangePercentage24H:
             json["market_cap_change_percentage_24h"].toDouble(),
         circulatingSupply: json["circulating_supply"].toDouble(),
-        totalSupply: json["total_supply"] == null
-            ? null
-            : json["total_supply"].toDouble(),
-        maxSupply:
-            json["max_supply"] == null ? null : json["max_supply"].toDouble(),
         ath: json["ath"].toDouble(),
         athChangePercentage: json["ath_change_percentage"].toDouble(),
         athDate: DateTime.parse(json["ath_date"]),
@@ -114,9 +106,7 @@ class NewsCrypto {
         "current_price": currentPrice,
         "market_cap": marketCap,
         "market_cap_rank": marketCapRank,
-        "fully_diluted_valuation":
-            fullyDilutedValuation == null ? null : fullyDilutedValuation,
-        "total_volume": totalVolume,
+        // "total_volume": totalVolume,
         "high_24h": high24H,
         "low_24h": low24H,
         "price_change_24h": priceChange24H,
@@ -124,8 +114,6 @@ class NewsCrypto {
         "market_cap_change_24h": marketCapChange24H,
         "market_cap_change_percentage_24h": marketCapChangePercentage24H,
         "circulating_supply": circulatingSupply,
-        "total_supply": totalSupply == null ? null : totalSupply,
-        "max_supply": maxSupply == null ? null : maxSupply,
         "ath": ath,
         "ath_change_percentage": athChangePercentage,
         "ath_date": athDate.toIso8601String(),

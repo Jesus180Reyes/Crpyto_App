@@ -1,9 +1,7 @@
 // ignore_for_file: file_names
 
 import 'package:cryptocu_app/src/services/crypto_services.dart';
-import 'package:cryptocu_app/src/widgets/banner_Crypto.dart';
-import 'package:cryptocu_app/src/widgets/card_crypto.dart';
-import 'package:cryptocu_app/src/widgets/titulo_crypto.dart';
+import 'package:cryptocu_app/src/widgets/widgets.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -15,6 +13,7 @@ class Tab1Page extends StatelessWidget {
   Widget build(BuildContext context) {
     final coins = Provider.of<CryptoServices>(context).coins;
     final news = Provider.of<CryptoServices>(context).news;
+    final markets = Provider.of<CryptoServices>(context).market;
 
     return Scaffold(
       // drawerScrimColor: Colors.red,
@@ -28,16 +27,31 @@ class Tab1Page extends StatelessWidget {
         ),
       ),
 
-      drawer: const Drawer(),
-
-      body: Column(
-        // ignore: prefer_const_literals_to_create_immutables
-        children: [
-          BannerCrypto(news: news),
-          const SizedBox(height: 7.0),
-          const TituloCrypto(),
-          CardCrpyto(coins: coins),
-        ],
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Column(
+            // ignore: prefer_const_literals_to_create_immutables
+            children: [
+              BannerCrypto(news: news),
+              const SizedBox(height: 7.0),
+              const TituloCrypto(
+                seeall: 'See All',
+                titulo: 'Top Trending 24Hr',
+                tap: 'all',
+              ),
+              CardCrpyto(coins: coins),
+              const SizedBox(height: 7.0),
+              const TituloCrypto(
+                titulo: 'Markets Coins',
+                seeall: 'See All',
+                tap: 'markets',
+              ),
+              MarketCrypto(
+                markets: markets,
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
