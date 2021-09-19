@@ -35,7 +35,7 @@ class Tab1Page extends StatelessWidget {
               BannerCrypto(news: news),
               const SizedBox(height: 7.0),
               const TituloCrypto(
-                seeall: 'See All',
+                seeall: '',
                 titulo: 'Top Trending 24Hr',
                 tap: 'all',
               ),
@@ -45,6 +45,7 @@ class Tab1Page extends StatelessWidget {
                 titulo: 'Markets Coins',
                 seeall: 'See All',
                 tap: 'markets',
+                icon: Icons.arrow_forward_ios,
               ),
               MarketCrypto(
                 markets: markets,

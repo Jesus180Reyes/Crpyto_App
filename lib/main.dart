@@ -1,5 +1,4 @@
 import 'package:cryptocu_app/src/pages/markets_Cryptos.dart';
-import 'package:cryptocu_app/src/pages/recommended_Crypto_page.dart';
 import 'package:cryptocu_app/src/services/crypto_services.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -24,7 +23,6 @@ class MyApp extends StatelessWidget {
         initialRoute: 'home',
         routes: {
           'home': (_) => const TabsPages(),
-          'all': (_) => const RecommendedCryptoPage(),
           'markets': (_) => const MarketsCryptoPage(),
         },
       ),

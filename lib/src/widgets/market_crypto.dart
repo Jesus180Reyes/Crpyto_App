@@ -89,7 +89,7 @@ class _BoxCoins extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 10, bottom: 9),
+      padding: const EdgeInsets.all(5),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -117,7 +117,8 @@ class _Images extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 4),
+      // padding: const EdgeInsets.a(left: 4),
+      padding: const EdgeInsets.all(5.0),
       child: FadeInImage(
         height: 60,
         placeholder: const AssetImage('assets/loading2.gif'),
@@ -186,8 +187,8 @@ class _Names extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      mainAxisAlignment: MainAxisAlignment.center,
+      // crossAxisAlignment: CrossAxisAlignment.center,
+      // mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text(
           markets.name,

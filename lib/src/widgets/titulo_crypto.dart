@@ -6,10 +6,15 @@ import 'package:flutter/painting.dart';
 
 class TituloCrypto extends StatelessWidget {
   final String titulo;
-  final String seeall;
+  final String? seeall;
+  final IconData? icon;
   final String tap;
   const TituloCrypto(
-      {Key? key, required this.titulo, required this.seeall, required this.tap})
+      {Key? key,
+      required this.titulo,
+      this.seeall,
+      required this.tap,
+      this.icon})
       : super(key: key);
 
   @override
@@ -29,12 +34,12 @@ class TituloCrypto extends StatelessWidget {
           GestureDetector(
             onTap: () => Navigator.pushNamed(context, tap),
             child: Text(
-              seeall,
+              seeall!,
               style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
             ),
           ),
           Icon(
-            Icons.arrow_forward_ios_sharp,
+            icon,
             size: 20,
           ),
         ],
