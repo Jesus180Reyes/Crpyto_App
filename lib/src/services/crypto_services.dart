@@ -8,7 +8,7 @@ import 'package:http/http.dart' as http;
 
 const _url_trending = 'https://api.coingecko.com/api/v3';
 const _url_news = 'https://api.coingecko.com/api/v3';
-// const _url_markets = 'https://api.coingecko.com/api/v3';
+const _url_markets = 'https://api.coingecko.com/api/v3';
 
 class CryptoServices with ChangeNotifier {
   final List<Coin> coins = [];
@@ -40,10 +40,11 @@ class CryptoServices with ChangeNotifier {
 
   getMarketsCoin() async {
     final url = Uri.parse(
-        'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&per_page=100&page=1');
+        '$_url_markets/coins/markets?vs_currency=usd&per_page=100&page=1');
     final resp = await http.get(url);
     final newsResponse = newsCryptoFromJson(resp.body);
     market.addAll(newsResponse);
+    // print(resp.body);
     notifyListeners();
   }
 }

@@ -149,19 +149,35 @@ class _Price extends StatelessWidget {
             maxLines: 1,
             overflow: TextOverflow.fade,
           ),
-          (markets.priceChange24H > 1)
+          (markets.priceChange24H < 0)
               ? Text(
                   'USD ${markets.priceChange24H}',
                   style: const TextStyle(
                       fontSize: 11,
-                      color: Colors.green,
+                      color: Colors.red,
                       fontWeight: FontWeight.bold),
                 )
               : Text(
-                  'USD -${markets.priceChange24H}',
+                  'USD ${markets.priceChange24H}',
                   style: const TextStyle(
                     fontSize: 11,
-                    color: Colors.red,
+                    color: Colors.green,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+          (markets.priceChangePercentage24H < 0)
+              ? Text(
+                  ' ${markets.priceChangePercentage24H}%',
+                  style: const TextStyle(
+                      fontSize: 11,
+                      color: Colors.red,
+                      fontWeight: FontWeight.bold),
+                )
+              : Text(
+                  ' ${markets.priceChangePercentage24H}%',
+                  style: const TextStyle(
+                    fontSize: 11,
+                    color: Colors.green,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
