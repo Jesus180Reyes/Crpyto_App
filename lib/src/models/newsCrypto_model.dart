@@ -110,7 +110,8 @@ class NewsCrypto {
         "high_24h": high24H,
         "low_24h": low24H,
         "price_change_24h": priceChange24H.round(),
-        "price_change_percentage_24h": priceChangePercentage24H,
+        "price_change_percentage_24h":
+            priceChangePercentage24H.toStringAsFixed(3),
         "market_cap_change_24h": marketCapChange24H,
         "market_cap_change_percentage_24h": marketCapChangePercentage24H,
         "circulating_supply": circulatingSupply,
